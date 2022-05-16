@@ -34,22 +34,9 @@ class MyServer(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        html = 'index.html'
-#
-#        '''
-#           <html>
-#           <body
-#            style="width:960px; margin: 20px auto;">
-#           <h1>Welcome to my Raspberry Pi</h1>
-#           <p>Current GPU temperature is {}</p>
-#           <form action="/" method="POST">
-#               Turn LED :
-#               <input type="submit" name="submit" value="On">
-#               <input type="submit" name="submit" value="Off">
-#           </form>
-#           </body>
-#           </html>
-#        '''
+        myfile = open('/var/www/html/LEDwebServerRPi3/index.html')
+        html = myfile.read()
+
         temp = getTemperature()
         self.do_HEAD()
         self.wfile.write(html.format(temp[5:]).encode("utf-8"))
