@@ -15,6 +15,11 @@ def setupGPIO():
     GPIO.setup(18, GPIO.OUT)
 
 
+def getTemperature():
+    temp = os.popen("/opt/vc/bin/vcgencmd measure_temp").read()
+    return temp
+
+
 class MyServer(BaseHTTPRequestHandler):
 
     def do_HEAD(self):
@@ -32,6 +37,7 @@ class MyServer(BaseHTTPRequestHandler):
         myfile = open('/var/www/html/LEDwebServerRPi3/index.html')
         html = myfile.read()
 
+        temp = getTemperature()
         self.do_HEAD()
         self.wfile.write(html.format(temp[5:]).encode("utf-8"))
 
