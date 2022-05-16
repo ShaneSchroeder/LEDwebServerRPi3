@@ -14,6 +14,7 @@ def setupGPIO():
 
     GPIO.setup(18, GPIO.OUT)
 
+
 class MyServer(BaseHTTPRequestHandler):
 
     def do_HEAD(self):
@@ -32,6 +33,7 @@ class MyServer(BaseHTTPRequestHandler):
         html = myfile.read()
 
         self.do_HEAD()
+        self.wfile.write(html.format(temp[5:]).encode("utf-8"))
 
     def do_POST(self):
 
