@@ -16,7 +16,7 @@ def setupGPIO():
 
 
 def getTemperature():
-    temp = os.popen("/opt/vc/bin/vcgencmd measure_temp").read()
+    temp = os.popen("/usr/bin/vcgencmd measure_temp").read()
     return temp
 
 
