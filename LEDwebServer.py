@@ -34,8 +34,8 @@ class MyServer(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        myfile = open('/var/www/html/LEDwebServerRPi3/index.html')
-        html = myfile.read()
+        index = open('/var/www/html/LEDwebServerRPi3/index.html')
+        html = index.read()
 
         temp = getTemperature()
         self.do_HEAD()
